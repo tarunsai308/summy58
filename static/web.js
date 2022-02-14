@@ -81,7 +81,15 @@ function initializeSummary() {
                     // Enabling re-summarize element
                     re_summarize_element.style.display = "block";
                 }
-            })
+            }).catch(error => {
+                // Network issue occurred during fetch probably. Logging and sending result backs.
+                console.log(error);
+                process_element.innerHTML = "A network issue was encountered. Please retry.";
+                // We failed to fetch: Reason is already pushed to UI in process_element (response.result_message has reason)
+                text_out_content_element.innerHTML = "We failed due to above reason.";
+                text_out_content_element.style.textAlign = "center";
+                // Enabling re-summarize element
+                re_summarize_element.style.display = "block";
             })
         } else {
             // Alerting user that they entered wrong URL
