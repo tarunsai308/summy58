@@ -25,7 +25,6 @@ from heapq import nlargest
 
 
 
-
 def spacy_summarize(text_content, percent):
     # Frequency Based Summarization using Spacy.
     # Build a List of Stopwords
