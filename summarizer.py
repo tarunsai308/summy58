@@ -1,5 +1,5 @@
 # Gensim Imports
-from gensim.summarization.summarizer import summarize
+
 
 # Spacy Imports
 import spacy
@@ -23,13 +23,7 @@ from string import punctuation
 from heapq import nlargest
 
 
-def gensim_summarize(text_content, percent):
-    # TextRank Summarization using Gensim Library.
-    # Split is false, gensim return strings joined by "\n". if true, gensim will return list
-    summary = summarize(text_content, ratio=(int(percent) / 100), split=False).replace("\n", " ")
 
-    # Returning NLTK Summarization Output
-    return summary
 
 
 def spacy_summarize(text_content, percent):
