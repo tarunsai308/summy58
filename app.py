@@ -21,7 +21,7 @@ from summarizer import gensim_summarize, spacy_summarize, nltk_summarize, sumy_l
 
 
     # Creating Flask Object and returning it.
-    app = Flask(__name__)
+app = Flask(__name__)
 
     # "Punkt" download before nltk tokenization
     try:
