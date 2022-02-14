@@ -16,33 +16,34 @@ import os
 from summarizer import spacy_summarize, nltk_summarize, sumy_lsa_summarize, sumy_luhn_summarize, \
     sumy_text_rank_summarize
 
+# Waitress Import for Serving at Heroku
+from waitress import serve
 
 
-
-
+def create_app():
     # Creating Flask Object and returning it.
-app = Flask(__name__)
+    app = Flask(__name__)
 
     # "Punkt" download before nltk tokenization
-try:
-    nltk.data.find('tokenizers/punkt')
-except LookupError:
-    print('Downloading punkt')
-    nltk.download('punkt', quiet=True)
+    try:
+        nltk.data.find('tokenizers/punkt')
+    except LookupError:
+        print('Downloading punkt')
+        nltk.download('punkt', quiet=True)
 
     # "Wordnet" download before nltk tokenization
-try:
-    nltk.data.find('corpora/wordnet')
-except LookupError:
-    print('Downloading wordnet')
-    nltk.download('wordnet')
+    try:
+        nltk.data.find('corpora/wordnet')
+    except LookupError:
+        print('Downloading wordnet')
+        nltk.download('wordnet')
 
     # "Stopwords" download before nltk tokenization
-try:
-    nltk.data.find('corpora/stopwords')
-except LookupError:
-    print('Downloading Stopwords')
-    nltk.download("stopwords", quiet=True)
+    try:
+        nltk.data.find('corpora/stopwords')
+    except LookupError:
+        print('Downloading Stopwords')
+        nltk.download("stopwords", quiet=True)
 
     # Processing Function for below route.
     @app.route('/summarize/', methods=['GET'])
@@ -77,7 +78,7 @@ except LookupError:
                         if num_sent_text > 1:
 
                             # Summarizing Formatted Text based upon the request's choice
-                             # Gensim Library for TextRank Based Summary.
+                              # Gensim Library for TextRank Based Summary.
                             if choice == "spacy-sum":
                                 summary = spacy_summarize(formatted_text,
                                                           percent)  # Spacy Library for frequency-based summary.
@@ -213,7 +214,11 @@ except LookupError:
                 code = 301
                 return redirect(url, code=code)
 
+    return app
+
+
 if __name__ == '__main__':
     # Running Flask Application
     # app.run()
-    app.run()
+    flask_app = create_app()
+    serve(flask_app, host='0.0.0.0', port=80, debug=False, url_scheme='https')
