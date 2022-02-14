@@ -13,7 +13,7 @@ import nltk
 import os
 
 # Summarizer Import (Our Another File: summarizer.py)
-from summarizer import gensim_summarize, spacy_summarize, nltk_summarize, sumy_lsa_summarize, sumy_luhn_summarize, \
+from summarizer import spacy_summarize, nltk_summarize, sumy_lsa_summarize, sumy_luhn_summarize, \
     sumy_text_rank_summarize
 
 
@@ -55,7 +55,7 @@ except LookupError:
         # Checking whether all parameters exist or not
         if video_id and percent and choice:
             # Every parameter exists here: checking validity of choice
-            choice_list = ["gensim-sum", "spacy-sum", "nltk-sum", "sumy-lsa-sum", "sumy-luhn-sum", "sumy-text-rank-sum"]
+            choice_list = ["spacy-sum", "nltk-sum", "sumy-lsa-sum", "sumy-luhn-sum", "sumy-text-rank-sum"]
             if choice in choice_list:
                 # Choice Correct: Proceeding with Transcript Fetch and its Summarization
                 try:
@@ -77,10 +77,8 @@ except LookupError:
                         if num_sent_text > 1:
 
                             # Summarizing Formatted Text based upon the request's choice
-                            if choice == "gensim-sum":
-                                summary = gensim_summarize(formatted_text,
-                                                           percent)  # Gensim Library for TextRank Based Summary.
-                            elif choice == "spacy-sum":
+                             # Gensim Library for TextRank Based Summary.
+                            if choice == "spacy-sum":
                                 summary = spacy_summarize(formatted_text,
                                                           percent)  # Spacy Library for frequency-based summary.
                             elif choice == "nltk-sum":
