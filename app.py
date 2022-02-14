@@ -213,3 +213,7 @@ except LookupError:
                 code = 301
                 return redirect(url, code=code)
 
+if __name__ == '__main__':
+    # Running Flask Application
+    # app.run()
+    app.run()
