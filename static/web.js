@@ -110,16 +110,14 @@ function parse_choice(choice_index) {
     // Return Choice string as per our server
     switch (choice_index) {
         case 1:
-            return "gensim-sum";
-        case 2:
             return "nltk-sum";
-        case 3:
+        case 2:
             return "spacy-sum";
-        case 4:
+        case 3:
             return "sumy-lsa-sum"
-        case 5:
+        case 4:
             return "sumy-luhn-sum";
-        case 6:
+        case 5:
             return "sumy-text-rank-sum";
     }
 }
