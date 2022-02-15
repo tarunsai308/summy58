@@ -50,7 +50,7 @@ function initializeSummary() {
             youtube_div.style.display = "none";
             text_out_main_div.style.display = "block";
 
-            
+            // https://ytsum.herokuapp.com
             // http://127.0.0.1:5000
             // Fetch request to our server. (GET request with arguments received from popup.html
             fetch("https://summy58.herokuapp.com/summarize/?id=" + video_id +
