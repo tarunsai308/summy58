@@ -192,11 +192,11 @@ def create_app():
         # Displaying root.html to the end user
         return render_template('root.html')
 
-    @app.route('/web/')
+    @app.route('/index/')
     def summarizer_web():
         # We are at web.html, online input boxes are there to summarize the given video URL.
         # Displaying web.html to the end user
-        return render_template('web.html')
+        return render_template('index.html')
 
     @app.route('/api/')
     def summarizer_api_info_route():
