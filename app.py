@@ -78,6 +78,7 @@ def create_app():
                         if num_sent_text > 1:
 
                             # Summarizing Formatted Text based upon the request's choice
+                              # Gensim Library for TextRank Based Summary.
                             if choice == "spacy-sum":
                                 summary = spacy_summarize(formatted_text,
                                                           percent)  # Spacy Library for frequency-based summary.
